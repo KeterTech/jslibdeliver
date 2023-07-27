@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fireworks Animation</title>
+	<script src="firework.js"></script>
+
+	<style>
+	.fireworks-container {
+	  position: fixed;
+	  left: 0;
+	  top: 0;
+	  width: 100%;
+	  height: 100%;
+	  background: #000000;
+	}
+	</style>
+</head>
+<body>
+  <div style="position: relative;">
+    <canvas id="fireworksCanvas"></canvas>
+  </div>
+  <div class="fireworks-container" style="background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;"></div>
+	<script>
+	  const container = document.querySelector('.fireworks-container')
+	  const fireworks = new Fireworks.default(container, { 'friction': 1.0, 'particles': 500, 'delay': { mins: 3, max: 3 } })
+	  fireworks.start()
+	  
+	  // example smoothly close the effects
+	  setTimeout(function(){
+		fireworks.updateOptions({ 'intensity': 0 });
+	  }, 1000);
+	  setTimeout(function(){
+		fireworks.updateOptions({ 'intensity': 30 });
+	  }, 3000);
+	</script>
+</body>
+</html>
